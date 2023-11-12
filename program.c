@@ -13,74 +13,58 @@
 #define OPENDIR_ERROR 1
 #define OPENFIS_ERROR 2
 
-#define BUFF_SIZE 256
+#define PATH_MAX 256
 
 int main(int argc, char *argv[]) {
-    struct stat var;
     int fin, fout, rd, counter = 0;
-    char buffer[BUFF_SIZE], buff2[BUFF_SIZE], buff3[BUFF_SIZE], path[201];
     DIR *dir;
+    FILE *fis;
+    char *dir_path = argv[1];
 
-    if(argc != 1) {
+    if(argc != 2) {
         perror("Nu e ok.\n");
         exit(ARGC_ERROR);
     }
 
-    if((dir = opendir(argv)) == 0) {
-        perror("Eroare la deschidere director.\n");
+    if((dir = opendir(dir_path)) == 0) {
+        perror("Usage ./program <fisier_intrare>\n");
         exit(OPENDIR_ERROR);
     }
     
-    if((fis = open("statistica.txt")) == 0) {
+    if((fis = open("statistica.txt", O_WRONLY | O_TRUNC | O_CREAT, S_IRWXU)) < 0) {
         perror("Eroare la deschidere fisier de iesire.\n");
         exit(OPENFIS_ERROR);
     }
-    
-    while(readdir(dir)) != 0) {
 
-    }
+    for(struct dirent* entry = readdir(dir); entry != NULL; entry = readdir(dir)) {
+        char entry_path[PATH_MAX] = {0};
+        int rc = snprintf(entry_path, sizeof entry_path, "%s/%s", dir_path, entry->d_name);
+        if (rc < 0 || rc >= sizeof entry_path) {
+            fprintf(stderr, "Fisier/Director necunoscut\n", entry->d_name);
+            continue;
+        }
 
-    int offset;
+        char *dot = strrchr(entry_path, '.');
+        struct stat file_info;
 
-    offset = fseek(fis, 2, SEEK_SET);
-    printf("%d", offset);
-
-    if((fin = open(argv[1], O_RDONLY)) < 0) {
-        perror("Nu se poate deschide fisierul de intrare.\n");
-    }
-
-    if((fout = open(argv[2], O_WRONLY | O_TRUNC | O_CREAT, S_IRWXU)) < 0) {
-        perror("Nu se poate deschide fisierul de iesire.\n");
-    }
-
-    while((rd = read(fin, buffer, BUFF_SIZE)) > 0) {
-        sprintf(buff2, "%s", buffer);
-        for(int i = 0; i < rd; i ++) {
-            if(isalnum(buff2[i])) {
-                counter ++;
+        if (dot) {
+            if (!strcmp(dot, ".bmp")) {
+                proces_bmp(entry_path);
+            } 
+            else {
+                proces_nobmp(entry_path);
             }
+        } 
+        if (lstat(entry_path, &file_info) == 0 && S_ISLNK(file_info.st_mode)) {
+            proces_legsimb(entry_path);
+        } 
+        if (S_ISDIR(file_info.st_mode)) {
+            proces_dir(entry_path);
         }
     }
 
-    sprintf(buff3, "Conter: %d\n", counter);
-
-    if(write(fout, &buff3, strlen(buff3)) < 0) {
-        perror("Nu se poate efectua scrierea.\n");
-    }
-
-    if(fstat(fin, &var)) {
-        perror("Eroare\n");
-    }
-    else {
-        sprintf(buff3, "User ID: %d\n", var.st_uid);
-    }
-
-    if(write(fout, &buff3, strlen(buff3)) < 0) {
-        perror("Nu se poate efectua scrierea.\n");
-    }
-
-    close(fin);
-    close(fout);
+    closedir(dir);
+    close(fis);
 
     return 0;
 }
