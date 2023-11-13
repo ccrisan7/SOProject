@@ -4,7 +4,7 @@ Latime: 225
 Dimensiune: 18054 B
 Identificatorul utilizatorului: 1000
 Timpul ultimei modificari: 13.11.2023
-Contorul de legaturi: 140724156788496
+Contorul de legaturi: 140731731312400
 Drepturi de acces user: -WX
 Drepturi de acces grup: RWX
 Drepturi de acces altii: --X
@@ -15,12 +15,6 @@ Identificatorul utilizatorului: 1000
 Timpul ultimei modificari: 13.11.2023
 Contorul de legaturi: 1
 Drepturi de acces user: RW-
-Drepturi de acces user: RWX
-Drepturi de acces user: RWX
-
-Nume director: dir/.
-Identificatorul utilizatorului: 1000
-Drepturi de acces user: RWX
 Drepturi de acces user: RWX
 Drepturi de acces user: RWX
 
@@ -45,7 +39,7 @@ Latime: 1920
 Dimensiune: 7372938 B
 Identificatorul utilizatorului: 1000
 Timpul ultimei modificari: 12.11.2023
-Contorul de legaturi: 140724156788496
+Contorul de legaturi: 140731731312400
 Drepturi de acces user: -WX
 Drepturi de acces grup: RWX
 Drepturi de acces altii: --X
@@ -65,19 +59,13 @@ Drepturi de acces user: RWX
 Drepturi de acces user: RWX
 Drepturi de acces user: RWX
 
-Nume director: dir/..
-Identificatorul utilizatorului: 1000
-Drepturi de acces user: RWX
-Drepturi de acces user: RWX
-Drepturi de acces user: RWX
-
 Nume fisier: dir/cr7.bmp
 Inaltime: 1200
 Latime: 1200
 Dimensiune: 4320138 B
 Identificatorul utilizatorului: 1000
 Timpul ultimei modificari: 13.11.2023
-Contorul de legaturi: 140724156788496
+Contorul de legaturi: 140731731312400
 Drepturi de acces user: -WX
 Drepturi de acces grup: RWX
 Drepturi de acces altii: --X

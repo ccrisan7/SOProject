@@ -22,6 +22,19 @@
 #define BUFFER_SIZE 256
 #define PATH_SIZE 4096
 
+int verif_dircrt(const char *str) {
+    int count = 0;
+    while (*str) {
+        if (*str == '/') {
+            count++;
+            if (*(str + 1) == '.')
+                return 2;
+        }
+        str++;
+    }
+    return count;
+}
+
 void proces_bmp(char *entry_path, int fis) {
     int latime, inaltime, dimensiune, bmp;
     char buffer[BUFFER_SIZE];
@@ -104,7 +117,7 @@ void proces_nobmp(char *entry_path, int fis) {
     write(fis, buffer, strlen(buffer));
 
     tm_info = localtime(&file_stat.st_mtime);
-    strftime(buffer, sizeof(buffer), "Timpul ultimei modificari: %d.%m.%Y\n", tm_info);
+    sprintf(buffer, "Timpul ultimei modificari: %d.%d.%d\n", tm_info->tm_mday, tm_info->tm_mon + 1, tm_info->tm_year + 1900);
     write(fis, buffer, strlen(buffer));
 
     sprintf(buffer, "Contorul de legaturi: %ld\n", file_stat.st_nlink);
@@ -241,20 +254,22 @@ int main(int argc, char *argv[]) {
             exit(NOBMP_ERROR);
         }
 
-        if (S_ISREG(st.st_mode)) {
-            char *dot = strrchr(entry_path, '.');
-            if (dot != NULL && !strcmp(dot, ".bmp")) {
-                proces_bmp(entry_path, fis);
-            } 
-            else {
-                proces_nobmp(entry_path, fis);
+        if(verif_dircrt(entry_path) < 2) {
+            if (S_ISREG(st.st_mode)) {
+                char *dot = strrchr(entry_path, '.');
+                if (dot != NULL && !strcmp(dot, ".bmp")) {
+                    proces_bmp(entry_path, fis);
+                } 
+                else {
+                    proces_nobmp(entry_path, fis);
+                }
             }
-        }
-        else if (S_ISLNK(st.st_mode)) {
-            proces_legsimb(entry_path, fis);
-        }
-        else if (S_ISDIR(st.st_mode)) {
-            proces_dir(entry_path, fis);
+            else if (S_ISLNK(st.st_mode)) {
+                proces_legsimb(entry_path, fis);
+            }
+            else if (S_ISDIR(st.st_mode)) {
+                proces_dir(entry_path, fis);
+            }
         }
     }
 
