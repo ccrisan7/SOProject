@@ -1,0 +1,341 @@
+Nume fisier: dir/imagine_3.bmp
+Inaltime: 256
+Latime: 256
+Dimensiune: 196662 B
+Identificatorul utilizatorului: 1000
+Timpul ultimei modificari: 9.12.2023
+Contorul de legaturi: 0
+Drepturi de acces user: ---
+Drepturi de acces grup: ---
+Drepturi de acces altii: ---
+
+Nume fisier: dir/bvb.bmp
+Inaltime: 225
+Latime: 225
+Dimensiune: 18054 B
+Identificatorul utilizatorului: 1000
+Timpul ultimei modificari: 9.12.2023
+Contorul de legaturi: 0
+Drepturi de acces user: ---
+Drepturi de acces grup: ---
+Drepturi de acces altii: ---
+
+Nume fisier: dir/img.bmp
+Inaltime: 1280
+Latime: 1920
+Dimensiune: 7372938 B
+Identificatorul utilizatorului: 1000
+Timpul ultimei modificari: 9.12.2023
+Contorul de legaturi: 0
+Drepturi de acces user: ---
+Drepturi de acces grup: ---
+Drepturi de acces altii: ---
+
+Nume fisier: dir/imagine_2.bmp
+Inaltime: 426
+Latime: 640
+Dimensiune: 818058 B
+Identificatorul utilizatorului: 1000
+Timpul ultimei modificari: 9.12.2023
+Contorul de legaturi: 0
+Drepturi de acces user: ---
+Drepturi de acces grup: ---
+Drepturi de acces altii: ---
+
+Nume fisier: dir/cr7.bmp
+Inaltime: 1200
+Latime: 1200
+Dimensiune: 4320138 B
+Identificatorul utilizatorului: 1000
+Timpul ultimei modificari: 9.12.2023
+Contorul de legaturi: 0
+Drepturi de acces user: ---
+Drepturi de acces grup: ---
+Drepturi de acces altii: ---
+
+Nume fisier: dir/cr7.bmp
+Inaltime: 1200
+Latime: 1200
+Dimensiune: 4320138 B
+Identificatorul utilizatorului: 1000
+Timpul ultimei modificari: 9.12.2023
+Contorul de legaturi: 0
+Drepturi de acces user: ---
+Drepturi de acces grup: ---
+Drepturi de acces altii: ---
+
+Nume fisier: dir/imagine_2.bmp
+Inaltime: 426
+Latime: 640
+Dimensiune: 818058 B
+Identificatorul utilizatorului: 1000
+Timpul ultimei modificari: 9.12.2023
+Contorul de legaturi: 0
+Drepturi de acces user: ---
+Drepturi de acces grup: ---
+Drepturi de acces altii: ---
+
+Nume fisier: dir/cr7.bmp
+Inaltime: 1200
+Latime: 1200
+Dimensiune: 4320138 B
+Identificatorul utilizatorului: 1000
+Timpul ultimei modificari: 9.12.2023
+Contorul de legaturi: 0
+Drepturi de acces user: ---
+Drepturi de acces grup: ---
+Drepturi de acces altii: ---
+
+Nume fisier: dir/cr7.bmp
+Inaltime: 1200
+Latime: 1200
+Dimensiune: 4320138 B
+Identificatorul utilizatorului: 1000
+Timpul ultimei modificari: 9.12.2023
+Contorul de legaturi: 0
+Drepturi de acces user: ---
+Drepturi de acces grup: ---
+Drepturi de acces altii: ---
+
+Nume fisier: dir/img.bmp
+Inaltime: 1280
+Latime: 1920
+Dimensiune: 7372938 B
+Identificatorul utilizatorului: 1000
+Timpul ultimei modificari: 9.12.2023
+Contorul de legaturi: 0
+Drepturi de acces user: ---
+Drepturi de acces grup: ---
+Drepturi de acces altii: ---
+
+Nume fisier: dir/imagine_2.bmp
+Inaltime: 426
+Latime: 640
+Dimensiune: 818058 B
+Identificatorul utilizatorului: 1000
+Timpul ultimei modificari: 9.12.2023
+Contorul de legaturi: 0
+Drepturi de acces user: ---
+Drepturi de acces grup: ---
+Drepturi de acces altii: ---
+
+Nume fisier: dir/cr7.bmp
+Inaltime: 1200
+Latime: 1200
+Dimensiune: 4320138 B
+Identificatorul utilizatorului: 1000
+Timpul ultimei modificari: 9.12.2023
+Contorul de legaturi: 0
+Drepturi de acces user: ---
+Drepturi de acces grup: ---
+Drepturi de acces altii: ---
+
+Nume fisier: dir/cr7.bmp
+Inaltime: 1200
+Latime: 1200
+Dimensiune: 4320138 B
+Identificatorul utilizatorului: 1000
+Timpul ultimei modificari: 9.12.2023
+Contorul de legaturi: 0
+Drepturi de acces user: ---
+Drepturi de acces grup: ---
+Drepturi de acces altii: ---
+
+Nume fisier: dir/imagine_2.bmp
+Inaltime: 426
+Latime: 640
+Dimensiune: 818058 B
+Identificatorul utilizatorului: 1000
+Timpul ultimei modificari: 9.12.2023
+Contorul de legaturi: 0
+Drepturi de acces user: ---
+Drepturi de acces grup: ---
+Drepturi de acces altii: ---
+
+Nume fisier: dir/cr7.bmp
+Inaltime: 1200
+Latime: 1200
+Dimensiune: 4320138 B
+Identificatorul utilizatorului: 1000
+Timpul ultimei modificari: 9.12.2023
+Contorul de legaturi: 0
+Drepturi de acces user: ---
+Drepturi de acces grup: ---
+Drepturi de acces altii: ---
+
+Nume fisier: dir/cr7.bmp
+Inaltime: 1200
+Latime: 1200
+Dimensiune: 4320138 B
+Identificatorul utilizatorului: 1000
+Timpul ultimei modificari: 9.12.2023
+Contorul de legaturi: 0
+Drepturi de acces user: ---
+Drepturi de acces grup: ---
+Drepturi de acces altii: ---
+
+Nume fisier: dir/bvb.bmp
+Inaltime: 225
+Latime: 225
+Dimensiune: 18054 B
+Identificatorul utilizatorului: 1000
+Timpul ultimei modificari: 9.12.2023
+Contorul de legaturi: 0
+Drepturi de acces user: ---
+Drepturi de acces grup: ---
+Drepturi de acces altii: ---
+
+Nume fisier: dir/img.bmp
+Inaltime: 1280
+Latime: 1920
+Dimensiune: 7372938 B
+Identificatorul utilizatorului: 1000
+Timpul ultimei modificari: 9.12.2023
+Contorul de legaturi: 0
+Drepturi de acces user: ---
+Drepturi de acces grup: ---
+Drepturi de acces altii: ---
+
+Nume fisier: dir/imagine_2.bmp
+Inaltime: 426
+Latime: 640
+Dimensiune: 818058 B
+Identificatorul utilizatorului: 1000
+Timpul ultimei modificari: 9.12.2023
+Contorul de legaturi: 0
+Drepturi de acces user: ---
+Drepturi de acces grup: ---
+Drepturi de acces altii: ---
+
+Nume fisier: dir/cr7.bmp
+Inaltime: 1200
+Latime: 1200
+Dimensiune: 4320138 B
+Identificatorul utilizatorului: 1000
+Timpul ultimei modificari: 9.12.2023
+Contorul de legaturi: 0
+Drepturi de acces user: ---
+Drepturi de acces grup: ---
+Drepturi de acces altii: ---
+
+Nume fisier: dir/cr7.bmp
+Inaltime: 1200
+Latime: 1200
+Dimensiune: 4320138 B
+Identificatorul utilizatorului: 1000
+Timpul ultimei modificari: 9.12.2023
+Contorul de legaturi: 0
+Drepturi de acces user: ---
+Drepturi de acces grup: ---
+Drepturi de acces altii: ---
+
+Nume fisier: dir/imagine_2.bmp
+Inaltime: 426
+Latime: 640
+Dimensiune: 818058 B
+Identificatorul utilizatorului: 1000
+Timpul ultimei modificari: 9.12.2023
+Contorul de legaturi: 0
+Drepturi de acces user: ---
+Drepturi de acces grup: ---
+Drepturi de acces altii: ---
+
+Nume fisier: dir/cr7.bmp
+Inaltime: 1200
+Latime: 1200
+Dimensiune: 4320138 B
+Identificatorul utilizatorului: 1000
+Timpul ultimei modificari: 9.12.2023
+Contorul de legaturi: 0
+Drepturi de acces user: ---
+Drepturi de acces grup: ---
+Drepturi de acces altii: ---
+
+Nume fisier: dir/cr7.bmp
+Inaltime: 1200
+Latime: 1200
+Dimensiune: 4320138 B
+Identificatorul utilizatorului: 1000
+Timpul ultimei modificari: 9.12.2023
+Contorul de legaturi: 0
+Drepturi de acces user: ---
+Drepturi de acces grup: ---
+Drepturi de acces altii: ---
+
+Nume fisier: dir/img.bmp
+Inaltime: 1280
+Latime: 1920
+Dimensiune: 7372938 B
+Identificatorul utilizatorului: 1000
+Timpul ultimei modificari: 9.12.2023
+Contorul de legaturi: 0
+Drepturi de acces user: ---
+Drepturi de acces grup: ---
+Drepturi de acces altii: ---
+
+Nume fisier: dir/imagine_2.bmp
+Inaltime: 426
+Latime: 640
+Dimensiune: 818058 B
+Identificatorul utilizatorului: 1000
+Timpul ultimei modificari: 9.12.2023
+Contorul de legaturi: 0
+Drepturi de acces user: ---
+Drepturi de acces grup: ---
+Drepturi de acces altii: ---
+
+Nume fisier: dir/cr7.bmp
+Inaltime: 1200
+Latime: 1200
+Dimensiune: 4320138 B
+Identificatorul utilizatorului: 1000
+Timpul ultimei modificari: 9.12.2023
+Contorul de legaturi: 0
+Drepturi de acces user: ---
+Drepturi de acces grup: ---
+Drepturi de acces altii: ---
+
+Nume fisier: dir/cr7.bmp
+Inaltime: 1200
+Latime: 1200
+Dimensiune: 4320138 B
+Identificatorul utilizatorului: 1000
+Timpul ultimei modificari: 9.12.2023
+Contorul de legaturi: 0
+Drepturi de acces user: ---
+Drepturi de acces grup: ---
+Drepturi de acces altii: ---
+
+Nume fisier: dir/imagine_2.bmp
+Inaltime: 426
+Latime: 640
+Dimensiune: 818058 B
+Identificatorul utilizatorului: 1000
+Timpul ultimei modificari: 9.12.2023
+Contorul de legaturi: 0
+Drepturi de acces user: ---
+Drepturi de acces grup: ---
+Drepturi de acces altii: ---
+
+Nume fisier: dir/cr7.bmp
+Inaltime: 1200
+Latime: 1200
+Dimensiune: 4320138 B
+Identificatorul utilizatorului: 1000
+Timpul ultimei modificari: 9.12.2023
+Contorul de legaturi: 0
+Drepturi de acces user: ---
+Drepturi de acces grup: ---
+Drepturi de acces altii: ---
+
+Nume fisier: dir/cr7.bmp
+Inaltime: 1200
+Latime: 1200
+Dimensiune: 4320138 B
+Identificatorul utilizatorului: 1000
+Timpul ultimei modificari: 9.12.2023
+Contorul de legaturi: 0
+Drepturi de acces user: ---
+Drepturi de acces grup: ---
+Drepturi de acces altii: ---
+

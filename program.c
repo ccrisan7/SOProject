@@ -22,6 +22,7 @@
 #define OPENDIR2_ERROR 8
 #define FORK_ERROR 9
 #define PROCFIU_ERROR 10
+#define COMMAND_ERROR 11
 
 #define BUFFER_SIZE 256
 #define ARRAY_SIZE 2048
@@ -42,7 +43,7 @@ int verif_dircrt(const char *str) {
 
 void proces_bmp(char *entry_path, int fis) {
     int latime, inaltime, dimensiune, bmp, fis2;
-    char buffer[BUFFER_SIZE], *fis_out;
+    char buffer[BUFFER_SIZE], fis_out[PATH_SIZE];
     struct stat st, file_stat;
     struct tm *tm_info;
 
@@ -120,8 +121,8 @@ void proces_bmp(char *entry_path, int fis) {
     close(fis2);
 }
 
-void proces_nobmp(char *entry_path, int fis) {
-    int fis2;
+void proces_nobmp(char *entry_path, int fis, char caracter) {
+    int fis2, status;
     char buffer[BUFFER_SIZE], *fis_out;
     struct stat file_stat;
     struct tm *tm_info;
@@ -180,6 +181,36 @@ void proces_nobmp(char *entry_path, int fis) {
     write(fis2, buffer, strlen(buffer));
     write(fis, "\n", 1);
     write(fis2, "\n", 1);
+
+    pid_t pid = fork();
+    if (pid < 0) {
+        perror("Eroare la fork().\n");
+        exit(FORK_ERROR);
+    } 
+    else if (pid == 0) { 
+        char command[ARRAY_SIZE];
+        snprintf(command, sizeof(command), "bash script.sh %s %c", entry_path, caracter);
+
+        int status = system(command);
+
+        if (status == -1) {
+            printf("Eroare la executarea comenzii!\n");
+        } 
+        else {
+            printf("Comanda executată cu succes!\n");
+            exit(COMMAND_ERROR);
+        }
+    }
+    else {
+        pid_t fiu = wait(&status);
+        if(fiu < 0) {
+            perror("Procesul fiu nu s-a terminat.\n");
+                exit(PROCFIU_ERROR);
+        }
+        if(WIFEXITED(status)) {
+            printf("S-a încheiat procesul cu pid-ul %d și codul %d.\n", fiu, WEXITSTATUS(status));              
+        }
+    }
 
     close(fis2);
 }
@@ -294,25 +325,73 @@ void proces_dir(char *entry_path, int fis) {
     close(fis2);
 }
 
+void convertire_color_table(FILE *bmp) {
+    uint8_t colorTableEntry[4], blue, green, red, grayscale;
+
+    fseek(bmp, 54, SEEK_SET);
+
+    while (fread(colorTableEntry, sizeof(uint8_t), 4, bmp) == 4) {
+        blue = colorTableEntry[0];
+        green = colorTableEntry[1];
+        red = colorTableEntry[2];
+
+        grayscale = 0.299 * red + 0.587 * green + 0.114 * blue;
+
+        fseek(bmp, -4, SEEK_CUR);
+        colorTableEntry[0] = grayscale;
+        colorTableEntry[1] = grayscale;
+        colorTableEntry[2] = grayscale;
+
+        fwrite(colorTableEntry, sizeof(uint8_t), 4, bmp);
+    }
+}
+
+
+void convertire_raster_data(FILE *bmp) {
+    int width, height;
+
+    fseek(bmp, 18, SEEK_SET);
+    fread(&width, sizeof(int), 1, bmp);
+    fread(&height, sizeof(int), 1, bmp);
+    fseek(bmp, 54, SEEK_SET);
+
+    for (int i = 0; i < height; i++) {
+        for (int j = 0; j < width; j++) {
+            uint8_t blue, green, red, grayscale;
+
+            fread(&blue, sizeof(uint8_t), 1, bmp);
+            fread(&green, sizeof(uint8_t), 1, bmp);
+            fread(&red, sizeof(uint8_t), 1, bmp);
+
+            grayscale = 0.299 * red + 0.587 * green + 0.114 * blue;
+
+            fseek(bmp, -3, SEEK_CUR);
+            fwrite(&grayscale, sizeof(uint8_t), 1, bmp);
+            fwrite(&grayscale, sizeof(uint8_t), 1, bmp);
+            fwrite(&grayscale, sizeof(uint8_t), 1, bmp);
+        }
+    }
+}
+
+
 void convertire_gri(const char *bmp_file) {
     FILE *bmp = fopen(bmp_file, "r+b");
+    short bitcount;
+
     if (bmp == NULL) {
         perror("Eroare la deschiderea fisierului BMP.\n");
         exit(BMP_ERROR);
     }
 
-    fseek(bmp, 54, SEEK_SET);
+    fseek(bmp, 28, SEEK_SET);
 
-    uint8_t pixel[3];
-    while (fread(&pixel, sizeof(uint8_t), 3, bmp) == 3) {
-        uint8_t gray = (uint8_t)(0.299 * pixel[2] + 0.587 * pixel[1] + 0.114 * pixel[0]);
+    fread(&bitcount, sizeof(short), 1, bmp);
 
-        fseek(bmp, -3, SEEK_CUR);
-        fwrite(&gray, sizeof(uint8_t), 1, bmp);
-        fwrite(&gray, sizeof(uint8_t), 1, bmp);
-        fwrite(&gray, sizeof(uint8_t), 1, bmp);
-
-        fseek(bmp, 0, SEEK_CUR);
+    if(bitcount <= 8) {
+        convertire_color_table(bmp);
+    }
+    else {
+        convertire_raster_data(bmp);
     }
 
     fclose(bmp);
@@ -320,18 +399,20 @@ void convertire_gri(const char *bmp_file) {
 
 
 int main(int argc, char *argv[]) {
-    int fis, n = 0, i, fiu, status, num_lines[ARRAY_SIZE];
-    char *dir_path, *dir_out;
+    int fis, i = 0, status, num_lines[ARRAY_SIZE];
+    char *dir_path, *dir_out, caracter;
     DIR *dir, *dir2;
     struct stat st;
+    struct dirent* entry;
 
-    if(argc != 3) {
+    if(argc != 4) {
         perror("Numar incorect de argumente.\n");
         exit(ARGC_ERROR);
     }
 
     dir_path = argv[1];
     dir_out = argv[2];
+    caracter = argv[3][0];
 
     if((dir = opendir(dir_path)) == 0) {
         perror("Usage ./program <fisier_intrare> <fisier_iesire>\n");
@@ -348,7 +429,7 @@ int main(int argc, char *argv[]) {
         exit(OPENFIS_ERROR);
     }
 
-    for(struct dirent* entry = readdir(dir); entry != NULL; entry = readdir(dir)) {
+    while((entry = readdir(dir)) != 0) {
         char entry_path[PATH_SIZE] = {0};
         sprintf(entry_path, "%s/%s", dir_path, entry->d_name);
 
@@ -367,42 +448,35 @@ int main(int argc, char *argv[]) {
                 if (S_ISREG(st.st_mode)) {
                     char *dot = strrchr(entry_path, '.');
                     if (dot != NULL && !strcmp(dot, ".bmp")) {
+                        num_lines[i] = 11;
                         proces_bmp(entry_path, fis);
                         convertire_gri(entry_path);
-                        num_lines[n] = 11;
                     } 
                     else {
-                        proces_nobmp(entry_path, fis);
-                        num_lines[n] = 9;
+                        num_lines[i] = 9;
+                        proces_nobmp(entry_path, fis, caracter);
                     }
                 }
                 else if (S_ISLNK(st.st_mode)) {
+                    num_lines[i] = 7;
                     proces_legsimb(entry_path, fis);
-                    num_lines[n] = 7;
                 }
                 else if (S_ISDIR(st.st_mode)) {
+                    num_lines[i] = 6;
                     proces_dir(entry_path, fis);
-                    num_lines[n] = 6;
                 }
-                exit(n);
-            } 
-            else {
-                int status;
-                wait(&status); 
             }
-        }
-        n ++;
-    }
-
-    for(i = 0; i < n; i ++) {
-        fiu = wait(&status);
-        if(fiu < 0) {
-            perror("Procesul fiu nu s-a terminat.\n");
-            exit(PROCFIU_ERROR);
-        }
-        if(WIFEXITED(status)) {
-            printf("Procesul fiu a scris %d linii în fișier.\n", num_lines[i]);  
-            printf("S-a încheiat procesul cu pid-ul %d și codul %d.\n", getpid(), WIFEXITED(status));              
+            else {
+                pid_t fiu = wait(&status);
+                if(fiu < 0) {
+                    perror("Procesul fiu nu s-a terminat.\n");
+                    exit(PROCFIU_ERROR);
+                }
+                if(WIFEXITED(status)) {
+                    printf("Procesul fiu a scris %d linii în fișier.\n", num_lines[i]);  
+                    printf("S-a încheiat procesul cu pid-ul %d și codul %d.\n", fiu, WEXITSTATUS(status));              
+                }
+            }
         }
     }
 
