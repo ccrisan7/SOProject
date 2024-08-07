@@ -1,2 +1,1 @@
-# SOProject
-Project of Cristian CRISAN for Operating Systems course
+This C program processes files in a directory to gather statistics, convert BMP images to grayscale, and handle symbolic links and directories. It generates reports with the collected data and handles errors gracefully.
